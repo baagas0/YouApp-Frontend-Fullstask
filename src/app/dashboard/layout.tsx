@@ -37,7 +37,7 @@ function Dashboard(props: Props): React.JSX.Element {
 
   return (
     <Suspense>
-        {children}
+        {isReady && children}
     </Suspense>
   );
 }

@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 import { Controller, useForm } from "react-hook-form";
 import MultiSelectField from "@/components/molecules/MultiSelectField";
+import { useUser } from "@/hooks/useContext";
 
 interface ProfileForm {
   interests: string[];
@@ -25,6 +26,7 @@ export default function ProfileInterest() {
     isLoading, data, onFetch,
   } = useFetch<Profile>({ initialLoading: true });
   const router = useRouter();
+  const user = useUser();
 
   const schema = useMemo(() => aboutSchema(), []) as Yup.ObjectSchema<ProfileForm>;
     const {
@@ -37,7 +39,7 @@ export default function ProfileInterest() {
       mode: 'onChange',
       resolver: yupResolver(schema),
       defaultValues: {
-        interests: [],
+        interests: user.user?.interests || [],
       },
     });
 
