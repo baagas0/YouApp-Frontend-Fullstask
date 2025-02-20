@@ -70,3 +70,9 @@ Im build debug android app and available to download, file on the root project d
 
 [Download Apk](https://github.com/baagas0/YouApp-Frontend-Fullstask/blob/main/app-debug.apk)
 
+## Docker Compose
+To build with docker and running up
+
+```bash
+    docker-compose up --build
+```
